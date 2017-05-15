@@ -29,9 +29,12 @@ public class UserDAOImpl implements UserDAO
 	{
 		try
 		{
-			Cart cart = new Cart();
-			cart.setUser(user);
-			user.setCart(cart);
+			if(user.getRole().equals("BUYER"))
+			{
+				Cart cart = new Cart();
+				cart.setUser(user);
+				user.setCart(cart);
+			}
 			sessionFactory.getCurrentSession().persist(user);
 			return true;
 			

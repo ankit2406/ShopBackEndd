@@ -51,15 +51,15 @@ public class CategoryTest {
 		userDAO = (UserDAO) context.getBean("userDAO");
 	}
 
-	//@Test
+	@Test
 	public void cartTest() {
 		user = new User();
-		user.setContact("909687766");
-		user.setEmail("Ankit2@gmail.com");
+		user.setContact("998965455");
+		user.setEmail("steven@gmail.com");
 		user.setEnabled(true);
-		user.setName("Ankit2");
-		user.setPassword("ankit2");
-		user.setRole("CUSTOMER");
+		user.setName("steven");
+		user.setPassword("steven");
+		user.setRole("BUYER");
 		
 		assertEquals("Saved", true, userDAO.save(user));
 	}
@@ -114,11 +114,7 @@ public class CategoryTest {
 	
 	}
 	
-	@Test
-	public void deleteCartItemTest()
-	{
-		
-	}
+	
 	
 	/*
 	 * @Test public void createCategoryTest() { category = new Category();

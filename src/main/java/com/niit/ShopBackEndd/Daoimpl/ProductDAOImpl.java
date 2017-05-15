@@ -69,4 +69,10 @@ public class ProductDAOImpl implements ProductDAO {
 	return	sessionFactory.getCurrentSession().createQuery("from Product where name like '%?%' ").setString(0, search_string).list();
 	
 	}
+
+	@Override
+	public Product getProductByName(String name) 
+	{
+		return (Product) sessionFactory.getCurrentSession().createQuery("from Product where product_name=?").setString(0, name).uniqueResult();
+	}
 }

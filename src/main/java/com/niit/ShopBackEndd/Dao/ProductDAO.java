@@ -15,6 +15,8 @@ public interface ProductDAO
 	public List<Product> list();
 	
 	public Product get(long product_Id);
+	
+	public Product getProductByName(String name);
 
 	public List<Product> getSimilarProducts(String search_string);
 	
