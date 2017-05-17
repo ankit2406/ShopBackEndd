@@ -114,6 +114,19 @@ public class CategoryTest {
 	
 	}
 	
+	@Test
+	public void getCategoryByIdTest()
+	{
+		category=categoryDAO.getCategoryByID(18);
+		System.out.println(category.getCategory_name());
+		boolean flag=true;
+		if(category==null)
+		{
+			flag=false;
+		}
+		assertEquals(true, flag);
+	}
+	
 	
 	
 	/*

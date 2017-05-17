@@ -6,17 +6,16 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import com.niit.ShopBackEndd.Dao.CategoryDAO;
 import com.niit.ShopBackEndd.Dao.ProductDAO;
 import com.niit.ShopBackEndd.Domain.Category;
 import com.niit.ShopBackEndd.Domain.Product;
 
 public class ProductTest 
 {
-	@Autowired
-	static AnnotationConfigApplicationContext context;
-	@Autowired
-	static ProductDAO productDAO;
-	
+	@Autowired	static AnnotationConfigApplicationContext context;
+	@Autowired	static ProductDAO productDAO;
+	@Autowired	static CategoryDAO categoryDAO;
 	static Product product;
 	static Category category;
 
@@ -41,7 +40,7 @@ public class ProductTest
 		
 		assertEquals(true, flag);
 	}
-	@Test
+	//@Test
 	public void createProduct() 
 	{
 		category=new Category();
@@ -81,5 +80,8 @@ public class ProductTest
 		int products=productDAO.list().size();
 		assertEquals(2, products);
 	}
+	
+	
+	
 
 }

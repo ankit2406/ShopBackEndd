@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.ShopBackEndd.Dao.ProductDAO;
+import com.niit.ShopBackEndd.Domain.Category;
 import com.niit.ShopBackEndd.Domain.Product;
 
 @Transactional
@@ -74,5 +75,12 @@ public class ProductDAOImpl implements ProductDAO {
 	public Product getProductByName(String name) 
 	{
 		return (Product) sessionFactory.getCurrentSession().createQuery("from Product where product_name=?").setString(0, name).uniqueResult();
+	}
+
+	@Override
+	public List<Product> getProductsByCategory(Category category)
+	{
+		System.out.println(category.getCategory_id());
+		return  sessionFactory.getCurrentSession().createQuery("from Product where Category_id=?").setLong(0, category.getCategory_id()).list();
 	}
 }

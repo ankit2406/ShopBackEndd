@@ -70,8 +70,7 @@ public class CategoryDAOImpl implements CategoryDAO
 
 	public Category getCategoryByID(long id) 
 	{
-		return (Category) sessionFactory.getCurrentSession().createQuery("from Category where id='" + id + "'")
-				.uniqueResult();
+		return (Category) sessionFactory.getCurrentSession().get(Category.class,id);
 	}
 	
 	@Override
