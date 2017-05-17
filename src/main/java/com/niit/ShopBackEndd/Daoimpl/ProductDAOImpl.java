@@ -80,7 +80,6 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public List<Product> getProductsByCategory(Category category)
 	{
-		System.out.println(category.getCategory_id());
 		return  sessionFactory.getCurrentSession().createQuery("from Product where Category_id=?").setLong(0, category.getCategory_id()).list();
 	}
 }
