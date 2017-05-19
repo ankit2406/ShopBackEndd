@@ -1,7 +1,6 @@
 package com.niit.ShopBackEndd.Domain;
 
 import java.io.Serializable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +20,8 @@ public class Category implements Serializable {
 
 	private String category_name;
 	
+	
+
 	public long getCategory_id() {
 		return category_id;
 	}

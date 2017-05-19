@@ -24,7 +24,7 @@ public class ProductDAOImpl implements ProductDAO {
 
 	public boolean createProduct(Product product) {
 		try {
-			sessionFactory.getCurrentSession().persist(product);
+			sessionFactory.getCurrentSession().save(product);
 
 		} catch (Exception e) {
 			e.printStackTrace();
