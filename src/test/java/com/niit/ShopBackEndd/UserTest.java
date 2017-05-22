@@ -27,7 +27,7 @@ public class UserTest
 		userDAO =  (UserDAO) context.getBean("userDAO");
 	}
 
-	@Test
+	//@Test
 	public void createUserTest() {
 		user=new User();
 		//user.setId("u201");
@@ -42,7 +42,7 @@ public class UserTest
 		
 	}
 	
-	//@Test
+	////@Test
 	public void updateUserTest()
 	{
 		user=userDAO.getUserById(201);
@@ -51,7 +51,7 @@ public class UserTest
 		assertEquals(true, flag);
 	}
 	
-	//@Test
+	////@Test
 	public void deactivateUserTest()
 	{
 		user=userDAO.getUserById(201);
@@ -60,14 +60,14 @@ public class UserTest
 		assertEquals(true, flag);
 	}
 	
-	//@Test
+	////@Test
 	public void validateUserTest()
 	{
 		boolean flag=userDAO.validate("u201", "12345");
 		assertEquals(true, flag);
 	}
 	
-	//@Test
+	////@Test
 	public void getAllUserTest()
 	{
 		int size=userDAO.list().size();

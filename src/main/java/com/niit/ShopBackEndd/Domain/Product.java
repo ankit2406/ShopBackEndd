@@ -10,8 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 @Component
 @Entity
@@ -26,6 +28,16 @@ public class Product implements Serializable
 	private String product_Name, product_Description;
 	private double Price;
 	
+	@Transient
+	private MultipartFile file;
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="category_id")
 	private Category category;

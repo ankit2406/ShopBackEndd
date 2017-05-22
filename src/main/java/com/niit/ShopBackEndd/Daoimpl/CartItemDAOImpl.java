@@ -14,7 +14,7 @@ import com.niit.ShopBackEndd.Domain.Cart;
 import com.niit.ShopBackEndd.Domain.CartItem;
 import com.niit.ShopBackEndd.Domain.Product;
 
-@Transactional
+@Transactional(dontRollbackOn = Exception.class)
 @Repository("cartItemDAO")
 public class CartItemDAOImpl implements CartItemDAO 
 {
@@ -58,7 +58,7 @@ public class CartItemDAOImpl implements CartItemDAO
 		try 
 		{
 			
-			sessionFactory.getCurrentSession().saveOrUpdate(cartItem);
+			sessionFactory.getCurrentSession().update(cartItem);
 			return true;
 		}
 		catch (Exception e) 

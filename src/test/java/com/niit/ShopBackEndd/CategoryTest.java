@@ -51,7 +51,7 @@ public class CategoryTest {
 		userDAO = (UserDAO) context.getBean("userDAO");
 	}
 
-	@Test
+	////@Test
 	public void cartTest() {
 		user = new User();
 		user.setContact("998965455");
@@ -64,16 +64,16 @@ public class CategoryTest {
 		assertEquals("Saved", true, userDAO.save(user));
 	}
 	
-	//@Test
+	@Test
 	public void cartItemTest()
 	{
-		user = userDAO.getUserById(25);
+		user = userDAO.getUserById(14);
 		cart = user.getCart();
 		cartItem=new CartItem();
-		product=productDAO.get(17);
+		product=productDAO.get(67);
 		
-		cartItem.setSell_quantity(4);
-		cartItem.setTotal_price(80000);
+		cartItem.setSell_quantity(1);
+		cartItem.setTotal_price(1800);
 		cartItem.setProduct(product);
 		cartItem.setTotal_price((int) (product.getPrice()*cartItem.getSell_quantity()));
 		cart.setGrandTotal(cart.getGrandTotal() + cartItem.getTotal_price());
@@ -85,7 +85,7 @@ public class CategoryTest {
 
 	}
 	
-	//@Test 
+	////@Test 
 	public void testUpdateCartItem() 
 	{ 
 		cartItem =cartItemDAO.getCartItemByCartItem_Id((long) 22);
@@ -100,7 +100,7 @@ public class CategoryTest {
 	
 	}
 	//decrease quantity in cartitem
-	//@Test
+	////@Test
 	public void removeQuantityTest()
 	{
 		cartItem =cartItemDAO.getCartItemByCartItem_Id((long) 22);
@@ -114,7 +114,7 @@ public class CategoryTest {
 	
 	}
 	
-	@Test
+	////@Test
 	public void getCategoryByIdTest()
 	{
 		category=categoryDAO.getCategoryByID(18);
@@ -130,23 +130,23 @@ public class CategoryTest {
 	
 	
 	/*
-	 * @Test public void createCategoryTest() { category = new Category();
+	 * //@Test public void createCategoryTest() { category = new Category();
 	 * //category.setCategory_id(1104);
 	 * category.setCategory_name("Smartphones"); boolean flag =
 	 * categoryDAO.save(category);
 	 * 
 	 * assertEquals(true, flag); }
 	 * 
-	 * // @Test public void updateCategoryTest() { //
+	 * // //@Test public void updateCategoryTest() { //
 	 * product.setProduct_Id("105"); String id = "cat101"; category =
 	 * categoryDAO.getCategoryByID(id);
 	 * category.setCategory_name("Home Appliances"); boolean flag =
 	 * categoryDAO.update(category); assertEquals(true, flag); }
 	 * 
-	 * //@Test public void getAllCategoriesTest() { List<Category> categories =
+	 * ////@Test public void getAllCategoriesTest() { List<Category> categories =
 	 * categoryDAO.list(); assertEquals(4, categories.size()); }
 	 * 
-	 * @Test public void deleteCategoryTestCase() {
+	 * //@Test public void deleteCategoryTestCase() {
 	 * category=categoryDAO.getCategoryByID(104); boolean flag =
 	 * categoryDAO.delete(category); assertEquals(true, flag); }
 	 */
