@@ -18,6 +18,10 @@ public interface CartItemDAO {
 	public CartItem getCartItemByCartItem_Id(Long cartItem_Id);
 
 	public CartItem getCartItemByUserIdAndProductId(Cart cart, Product product);
+	
+	public boolean deleteCartItemByProductId(long pid);
+	
+	public CartItem searchCartItemByUserIdAndProductId(Cart cart,Product product);
 
 	//public boolean searchCartItemByUserIdAndProductId(Cart cart, Product product);
 }

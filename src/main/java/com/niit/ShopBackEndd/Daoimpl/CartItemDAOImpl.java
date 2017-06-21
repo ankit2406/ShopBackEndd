@@ -113,7 +113,7 @@ public class CartItemDAOImpl implements CartItemDAO
 		}
 	}
 
-	public boolean searchCartItemByUserIdAndProductId(Cart cart, Product product) 
+	public CartItem searchCartItemByUserIdAndProductId(Cart cart, Product product) 
 	{
 		String selectCartId = "FROM CartItem where cart=:parameter1 and product=:parameter2";
 		Query<CartItem> query = sessionFactory.getCurrentSession().createQuery(selectCartId, CartItem.class);
@@ -121,14 +121,33 @@ public class CartItemDAOImpl implements CartItemDAO
 		query.setParameter("parameter2", product);
 		try 
 		{
-			 query.getSingleResult();
-			 return true;
+			 return query.getSingleResult();
+			 //return true;
 		}
 		catch (Exception e) 
 		{
 			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	public boolean deleteCartItemByProductId(long pid) 
+	{
+		try
+		{
+			
+			sessionFactory.getCurrentSession().createQuery("delete from CartItem where product_id=?").setLong(0, pid);
+			System.out.println(pid);
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
 			return false;
 		}
+		return true;
 	}
 
 	

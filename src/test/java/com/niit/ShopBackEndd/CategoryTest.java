@@ -64,7 +64,7 @@ public class CategoryTest {
 		assertEquals("Saved", true, userDAO.save(user));
 	}
 	
-	@Test
+	//@Test
 	public void cartItemTest()
 	{
 		user = userDAO.getUserById(14);
@@ -128,7 +128,18 @@ public class CategoryTest {
 	}
 	
 	
-	
+	@Test
+	public void deleteCartItemTest()
+	{
+		
+		product=productDAO.get(67);
+		
+		
+		boolean flag=cartItemDAO.deleteCartItemByProductId(product.getProduct_Id());
+		/*long pid=69;
+		boolean flag=cartItemDAO.deleteCartItemByProductId(pid); */
+		assertEquals(true, flag);
+	}
 	/*
 	 * //@Test public void createCategoryTest() { category = new Category();
 	 * //category.setCategory_id(1104);
