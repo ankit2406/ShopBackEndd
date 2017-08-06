@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -31,12 +32,15 @@ public class Cart implements Serializable {
 
 	private int grandTotal;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne()
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "cart")
-	private List<CartItem> cartList = new ArrayList<CartItem>(0);
+	//@OneToMany(fetch = FetchType.EAGER, mappedBy = "cart")
+	//@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE) 
+
+	//private List<CartItem> cartList = new ArrayList<CartItem>(0);
 
 	public long getCart_Id() {
 		return cart_Id;
@@ -74,17 +78,11 @@ public class Cart implements Serializable {
 		this.user = user;
 	}
 
-	public List<CartItem> getCartList() {
-		return cartList;
-	}
 
-	public void setCartList(List<CartItem> cartList) {
-		this.cartList = cartList;
-	}
 
 	@Override
 	public String toString() {
 		return "Cart [cart_Id=" + cart_Id + ", cartItemCount=" + cartItemCount + ", grandTotal=" + grandTotal
-				+ ", user=" + user + ", cartList=" + cartList + "]";
+				+ ", user=" + user + "]";
 	}
 }

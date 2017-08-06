@@ -5,6 +5,7 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -25,11 +29,15 @@ public class CartItem implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long cartItem_Id;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "product_id")
 	private Product product;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.EAGER)
+	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+	@JoinColumn(name = "cart_id")
+
+	
 	private Cart cart;
 
 	private int sell_quantity;

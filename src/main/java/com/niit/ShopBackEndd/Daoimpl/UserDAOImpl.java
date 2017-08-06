@@ -35,7 +35,7 @@ public class UserDAOImpl implements UserDAO
 				cart.setUser(user);
 				user.setCart(cart);
 			}
-			sessionFactory.getCurrentSession().persist(user);
+			sessionFactory.getCurrentSession().saveOrUpdate(user);
 			return true;
 			
 		}
