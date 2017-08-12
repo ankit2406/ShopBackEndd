@@ -1,13 +1,18 @@
 package com.niit.ShopBackEndd.Daoimpl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.niit.ShopBackEndd.Dao.OrderDAO;
+import com.niit.ShopBackEndd.Domain.CartItem;
 import com.niit.ShopBackEndd.Domain.OrderDetails;
+import com.niit.ShopBackEndd.Domain.User;
 
 @Transactional(dontRollbackOn = Exception.class)
 @Repository("orderDAO")
@@ -48,17 +53,38 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 	@Override
-	public boolean cancelOrder(OrderDetails orderDetails) {
+	public boolean cancelOrder(OrderDetails orderDetails) 
+	{
 		try 
 		{
 			// Delete order from database
 			sessionFactory.getCurrentSession().delete(orderDetails);
 			return true;
-		} catch (Exception ex) {
+		}
+		catch (Exception ex) 
+		{
 			ex.printStackTrace();
 			return false;
 		}
 	}
 
+	@Override
+	public List<OrderDetails> getOrderDetailsByUser(User user) 
+	{
+		String selectUserId = "FROM OrderDetails where user=:parameter";
+		Query<OrderDetails> query = sessionFactory.getCurrentSession().createQuery(selectUserId);
+		query.setParameter("parameter", user);
+		try 
+		{
+			return query.getResultList();
+		}
+		catch (Exception e) 
+		{
+			return null;
+		}
+	}
+
+
+	
 	
 }

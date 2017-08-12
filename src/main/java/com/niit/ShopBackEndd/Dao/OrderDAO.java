@@ -1,6 +1,9 @@
 package com.niit.ShopBackEndd.Dao;
 
+import java.util.List;
+
 import com.niit.ShopBackEndd.Domain.OrderDetails;
+import com.niit.ShopBackEndd.Domain.User;
 
 public interface OrderDAO {
 	
@@ -10,6 +13,7 @@ public interface OrderDAO {
 
 	public boolean cancelOrder(OrderDetails orderDetails);
 	
+	public List<OrderDetails> getOrderDetailsByUser(User user);
 	
 	
 

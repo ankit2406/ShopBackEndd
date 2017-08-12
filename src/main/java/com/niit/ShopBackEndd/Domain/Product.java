@@ -38,7 +38,7 @@ public class Product implements Serializable
 		this.file = file;
 	}
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="category_id")
 	private Category category;
 
