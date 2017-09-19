@@ -15,6 +15,5 @@ public interface OrderDAO {
 	
 	public List<OrderDetails> getOrderDetailsByUser(User user);
 	
-	
 
 }
